@@ -29,7 +29,7 @@ namespace AppliWPF_BDD_Personels
             InitializeComponent();
             bddPersonels= new CBDDPersonels1();
             List<Service> services=bddPersonels.GetAllServices();
-            datagridServies.ItemsSource = services;
+            datagridServices.ItemsSource = services;
         }
     }
 }
