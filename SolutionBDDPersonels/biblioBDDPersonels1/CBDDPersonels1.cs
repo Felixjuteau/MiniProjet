@@ -14,11 +14,11 @@ namespace biblioBDDPersonels1
         {
             dc = new BddpersonnelDataContext();
         }
-        public List<Fonction> GetAllServices()//permet de recuperer tout les services de la bdd 
+        public List<Service> GetAllServices()//permet de recuperer tout les services de la bdd 
         {
             try
             {
-                return dc.Fonctions.ToList();
+                return dc.Services.ToList();
             }
             catch (Exception ex)
             {
@@ -33,16 +33,15 @@ namespace biblioBDDPersonels1
             return dc.Services.OrderBy(y => y.Intitule).ToList();
 
         }
-        public int GetPersonnel(int _Id,string _Prenom,string _Nom,int _IdService,int _IdFonction,string _Telephone,byte[] _Photo) {
+        public Personnel GetPersonnel(string _Prenom,string _Nom,int _IdService,int _IdFonction,string _Telephone,byte[] _Photo) {//permet de recuperer 
             Personnel personnel = new Personnel();
-            personnel.Id = _Id;
             personnel.Prenom = _Prenom;
             personnel.Nom = _Nom;
             personnel.IdService = _IdService;
             personnel.IdFonction = _IdFonction;
             personnel.Telephone = _Telephone;
             personnel.Photo = _Photo;
-            return 0;
+            return personnel;
         }
 
         //return bdd.Personnels.Where(xx => x.Service.Id == service Id.OrderBy( y=> y.nom).then(y=>u.Prenom).ToList();
