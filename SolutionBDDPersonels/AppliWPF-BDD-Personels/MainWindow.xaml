@@ -6,15 +6,20 @@
         xmlns:local="clr-namespace:AppliWPF_BDD_Personels"
         mc:Ignorable="d"
         Title="Appli gestion personels" Height="450" Width="800">
-    <Grid>
-        <DataGrid x:Name="datagridServices" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,328,178"/>
-        <TextBox x:Name="TBNom" HorizontalAlignment="Left" Margin="555,178,0,0" TextWrapping="Wrap" Text="nom obligatoire" VerticalAlignment="Top" Width="184"/>
-        <TextBox x:Name="TBPrenom" HorizontalAlignment="Left" Margin="555,196,0,0" TextWrapping="Wrap" Text="prenom obligatoire" VerticalAlignment="Top" Width="184"/>
-        <TextBox x:Name="TBTelephone" HorizontalAlignment="Left" Margin="555,214,0,0" TextWrapping="Wrap" Text="telephone optionel" VerticalAlignment="Top" Width="184"/>
-        <TextBox HorizontalAlignment="Left" Margin="555,232,0,0" TextWrapping="Wrap" Text="service obligatoire" VerticalAlignment="Top" Width="184"/>
-        <TextBox HorizontalAlignment="Left" Margin="555,250,0,0" TextWrapping="Wrap" Text="fonction obligatoire" VerticalAlignment="Top" Width="184"/>
-        <Button Content="ajouter photo optionnel" Click="Button_Click" HorizontalAlignment="Left" Margin="555,286,0,0" VerticalAlignment="Top" Width="184"/>
-        <Image  x:Name="imagePicture" HorizontalAlignment="Left" Height="100" Margin="572,311,0,0" VerticalAlignment="Top" Width="153"/>
-        <Button Content="Button envoyer nouveaux personel" HorizontalAlignment="Left" Margin="167,343,0,0" VerticalAlignment="Top" Width="354" Height="47" Click="Button_envoyer"/>
+    <Grid Margin="0,-13,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <DataGrid x:Name="datagridServices" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,328,178" Grid.RowSpan="2"/>
+        <TextBox x:Name="TBNom" HorizontalAlignment="Left" Margin="555,167,0,0" TextWrapping="Wrap" Text="nom obligatoire" VerticalAlignment="Top" Width="184" Grid.Row="1" Height="18"/>
+        <TextBox x:Name="TBPrenom" HorizontalAlignment="Left" Margin="555,185,0,0" TextWrapping="Wrap" Text="prenom obligatoire" VerticalAlignment="Top" Width="184" Grid.Row="1" Height="18"/>
+        <TextBox x:Name="TBTelephone" HorizontalAlignment="Left" Margin="555,203,0,0" TextWrapping="Wrap" Text="telephone optionel" VerticalAlignment="Top" Width="184" Grid.Row="1" Height="18"/>
+        <TextBox x:Name="TBService" HorizontalAlignment="Left" Margin="555,221,0,0" TextWrapping="Wrap" Text="service obligatoire" VerticalAlignment="Top" Width="184" Grid.Row="1" Height="18"/>
+        <TextBox x:Name="TBFonction" HorizontalAlignment="Left" Margin="555,239,0,0" TextWrapping="Wrap" Text="fonction obligatoire" VerticalAlignment="Top" Width="184" Grid.Row="1" Height="18"/>
+        <Button Content="ajouter photo optionnel" Click="Button_Click" HorizontalAlignment="Left" Margin="555,275,0,0" VerticalAlignment="Top" Width="184" Grid.Row="1" Height="20"/>
+        <Image  x:Name="imagePicture" HorizontalAlignment="Left" Height="100" Margin="572,300,0,0" VerticalAlignment="Top" Width="153" Grid.Row="1"/>
+        <Button Content="Button envoyer nouveaux personel" HorizontalAlignment="Left" Margin="167,332,0,0" VerticalAlignment="Top" Width="354" Height="47" Click="Button_envoyer" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="236,300,0,0" Grid.RowSpan="2" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
     </Grid>
 </Window>

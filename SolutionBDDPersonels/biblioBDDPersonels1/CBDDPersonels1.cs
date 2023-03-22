@@ -25,6 +25,17 @@ namespace biblioBDDPersonels1
                 throw ex;
             }
         }
+        public List<Fonction> GetAllFonction()//permet de recuperer tout les services de la bdd 
+        {
+            try
+            {
+                return dc.Fonctions.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public List<Service> GetServicestrier()
         {
             //List<Service> services = dc.Services.ToList();

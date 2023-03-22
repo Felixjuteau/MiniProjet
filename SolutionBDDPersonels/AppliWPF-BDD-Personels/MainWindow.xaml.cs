@@ -44,7 +44,7 @@ namespace AppliWPF_BDD_Personels
 
         private void Button_envoyer(object sender, RoutedEventArgs e)
         {
-
+            
             Personnel personnel = new Personnel();
             personnel.Nom=TBNom.Text.ToString();
             personnel.Prenom=TBPrenom.Text.ToString();
