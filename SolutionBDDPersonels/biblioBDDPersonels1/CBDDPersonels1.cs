@@ -16,24 +16,29 @@ namespace biblioBDDPersonels1
         }
         public List<Service> GetAllServices()//permet de recuperer tout les services de la bdd 
         {
-            try
-            {
+            try{
                 return dc.Services.ToList();
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex){
                 throw ex;
             }
         }
         public List<Fonction> GetAllFonction()//permet de recuperer tout les services de la bdd 
         {
-            try
-            {
+            try{
                 return dc.Fonctions.ToList();
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex){
                 throw ex;
+            }
+        }
+        public List<Personnel> GetAllPersonnels()
+        {
+            try { 
+                return dc.Personnels.ToList(); 
+            } 
+            catch (Exception ex) { 
+                throw ex; 
             }
         }
         public List<Service> GetServicestrier()
@@ -54,7 +59,7 @@ namespace biblioBDDPersonels1
             personnel.Photo = _Photo;
             return personnel;
         }
-
+        
         //return bdd.Personnels.Where(xx => x.Service.Id == service Id.OrderBy( y=> y.nom).then(y=>u.Prenom).ToList();
 
     }

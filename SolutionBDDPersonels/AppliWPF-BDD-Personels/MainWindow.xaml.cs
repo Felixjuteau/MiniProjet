@@ -44,28 +44,29 @@ namespace AppliWPF_BDD_Personels
 
         private void Button_envoyer(object sender, RoutedEventArgs e)
         {
-            
-            Personnel personnel = new Personnel();
-            personnel.Nom=TBNom.Text.ToString();
-            personnel.Prenom=TBPrenom.Text.ToString();
-            List<Service> services = bddPersonels.GetAllServices();
-            List<Fonction> fonctions=bddPersonels.GetAllFonction();
-            foreach(Service service in services)
-            {
-                if (TBService.Text == service.Intitule)
-                {
-                    personnel.Service=service;
-                    personnel.IdService = service.Id;
-                }
-            }
-            foreach(Fonction fonction in fonctions )
-            {
-                if(TBFonction.Text==fonction.Intitule)
-                {
-                    personnel.Fonction=fonction;
-                    personnel.IdFonction=fonction.Id;
-                }
-            }
+            Window1 test=new Window1();
+            test.ShowDialog();
+            //Personnel personnel = new Personnel();
+            //personnel.Nom=TBNom.Text.ToString();
+            //personnel.Prenom=TBPrenom.Text.ToString();
+            //List<Service> services = bddPersonels.GetAllServices();
+            //List<Fonction> fonctions=bddPersonels.GetAllFonction();
+            //foreach(Service service in services)
+            //{
+            //    if (TBService.Text == service.Intitule)
+            //    {
+            //        personnel.Service=service;
+            //        personnel.IdService = service.Id;
+            //    }
+            //}
+            //foreach(Fonction fonction in fonctions )
+            //{
+            //    if(TBFonction.Text==fonction.Intitule)
+            //    {
+            //        personnel.Fonction=fonction;
+            //        personnel.IdFonction=fonction.Id;
+            //    }
+            //}
         }
     }
 }

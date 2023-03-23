@@ -13,21 +13,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace AppliWPF_BDD_Personels
 {
     /// <summary>
-    /// Logique d'interaction pour GérerPersonel.xaml
+    /// Logique d'interaction pour Window1.xaml
     /// </summary>
-    public partial class GérerPersonel : Page
-    {
-        private CBDDPersonels1 bddPersonels = null;
-        public GérerPersonel()
+    public partial class Window1 : Window
+    { 
+          private CBDDPersonels1 bddPersonels = null;
+    public Window1()
         {
             InitializeComponent();
             bddPersonels = new CBDDPersonels1();
+            Trombinoscope();
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -42,7 +42,6 @@ namespace AppliWPF_BDD_Personels
 
         private void Button_envoyer(object sender, RoutedEventArgs e)
         {
-
             Personnel personnel = new Personnel();
             personnel.Nom = TBNom.Text.ToString();
             personnel.Prenom = TBPrenom.Text.ToString();
@@ -66,5 +65,24 @@ namespace AppliWPF_BDD_Personels
                 }
             }
         }
+        private void Trombinoscope()
+        {
+            List<Personnel> personnels = bddPersonels.GetAllPersonnels();
+            BitmapImage image = new BitmapImage();
+            foreach (Personnel personnel in personnels)
+            {
+                image.BeginInit();
+                image.UriSource=new bi
+                image.EndInit();
+                UnPersonelImg.Source= image;
+                UnPersonelTB.Text = personnel.Nom + personnel.Prenom;
+                ListBoxTrom.Items.Add(UnPersonel);
+                
+            }
+
+        }
+
+
+       
     }
 }
