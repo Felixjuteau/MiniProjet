@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Drawing;
 using System.Threading.Tasks;
 using BddpersonnelContext;
+using System.Runtime.InteropServices.ComTypes;
+using System.Windows;
+using static System.Net.Mime.MediaTypeNames;
+
 namespace biblioBDDPersonels1
 {
     public class CBDDPersonels1
     {
         private BddpersonnelDataContext dc = null;
-
         public CBDDPersonels1()
         {
             dc = new BddpersonnelDataContext();
@@ -59,8 +64,10 @@ namespace biblioBDDPersonels1
             personnel.Photo = _Photo;
             return personnel;
         }
-        
-        //return bdd.Personnels.Where(xx => x.Service.Id == service Id.OrderBy( y=> y.nom).then(y=>u.Prenom).ToList();
 
+        //return bdd.Personnels.Where(xx => x.Service.Id == service Id.OrderBy( y=> y.nom).then(y=>u.Prenom).ToList();
+        
     }
 }
+    
+

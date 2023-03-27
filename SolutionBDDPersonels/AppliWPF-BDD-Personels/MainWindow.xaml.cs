@@ -28,7 +28,7 @@ namespace AppliWPF_BDD_Personels
         {
             InitializeComponent();
             bddPersonels= new CBDDPersonels1();
-            List<Service> services = bddPersonels.GetAllServices();
+            List<Personnel> services = bddPersonels.GetAllPersonnels();
             datagridServices.ItemsSource = services;
         }
         private void Button_Click(object sender, RoutedEventArgs e)
