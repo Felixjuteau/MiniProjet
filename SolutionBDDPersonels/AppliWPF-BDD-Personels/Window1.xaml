@@ -23,16 +23,16 @@
                 <TranslateTransform/>
             </TransformGroup>
         </Grid.RenderTransform>
-        <TextBlock HorizontalAlignment="Left" Margin="3,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="4" Height="198" Width="66"><Run Text="Nom :"/><LineBreak/><Run/><LineBreak/><Run Text="prenom : "/><LineBreak/><Run/><LineBreak/><Run Text="Service : "/><LineBreak/><Run/><LineBreak/><Run Text="Fonction :"/><LineBreak/><Run/><LineBreak/><Run Text="Téléphone :"/><LineBreak/><Run/><LineBreak/><Run Text="Photo :"/><LineBreak/><Run/></TextBlock>
-        <TextBox x:Name="TBNom" Grid.Column="4" HorizontalAlignment="Left" Margin="46,39,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="123" Height="17"/>
-        <TextBox x:Name="TBTelephone" Grid.Column="4" HorizontalAlignment="Left" Margin="76,160,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="93" Height="17"/>
-        <TextBox x:Name="TBPrenom" Grid.Column="4" HorizontalAlignment="Left" Margin="61,71,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="108" Height="17"/>
-        <ComboBox x:Name="CBService" Grid.Column="4" HorizontalAlignment="Left" Margin="55,98,0,0" VerticalAlignment="Top" Width="114" Height="21" SelectionChanged="CBService_SelectionChanged" />
-        <ComboBox x:Name="CBFonction" Grid.Column="4" HorizontalAlignment="Left" Margin="67,127,0,0" VerticalAlignment="Top" Width="102" Height="21"/>
-        <Button x:Name="BtPhoto" Grid.Column="4" Content="Choisir" HorizontalAlignment="Left" Margin="88,189,0,0" VerticalAlignment="Top" Width="68" Height="19" Click="BtPhoto_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="3,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="4" Height="198" Width="66"><Run Text="Nom :"/><LineBreak/><Run/><LineBreak/><Run Text="prenom : "/><LineBreak/><Run/><LineBreak/><Run Text="Service : "/><LineBreak/><Run/><LineBreak/><Run Text="Fonction :"/><LineBreak/><Run/><LineBreak/><Run Text="Téléphone :"/><LineBreak/><Run/><LineBreak/><Run Text="Photo :"/><LineBreak/><Run/></TextBlock>
+        <TextBox x:Name="TBNom" Grid.Column="4" HorizontalAlignment="Left" Margin="46,35,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="123" Height="17"/>
+        <TextBox x:Name="TBTelephone" Grid.Column="4" HorizontalAlignment="Left" Margin="76,162,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="93" Height="17"/>
+        <TextBox x:Name="TBPrenom" Grid.Column="4" HorizontalAlignment="Left" Margin="60,66,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="108" Height="17"/>
+        <ComboBox x:Name="CBService" Grid.Column="4" HorizontalAlignment="Left" Margin="55,96,0,0" VerticalAlignment="Top" Width="114" Height="21" IsEditable="True" />
+        <ComboBox x:Name="CBFonction" Grid.Column="4" HorizontalAlignment="Left" Margin="67,129,0,0" VerticalAlignment="Top" Width="102" Height="21" IsEditable="True"/>
+        <Button x:Name="BtPhoto" Grid.Column="4" Content="Choisir" HorizontalAlignment="Left" Margin="89,193,0,0" VerticalAlignment="Top" Width="68" Height="19" Click="BtPhoto_Click"/>
         <Image x:Name="imagePicture" Grid.Column="4" HorizontalAlignment="Left" Margin="13,233,0,0" Width="138" Height="129" VerticalAlignment="Top"/>
         <Button x:Name="BtModif" Grid.Column="4" Content="Modifier" HorizontalAlignment="Left" Margin="14,375,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.224,1.028" Height="28" Width="60"/>
-        <Button x:Name="BtSupprimer" Grid.Column="4" Content="supprimer" HorizontalAlignment="Left" Margin="99,374,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.527,0.441" Height="29" Width="60" />
+        <Button x:Name="BtSupprimer" Grid.Column="4" Content="supprimer" HorizontalAlignment="Left" Margin="99,375,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.56,0.757" Height="29" Width="60" />
         <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="130,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="276" Height="25" TextAlignment="Center" FontSize="16" TextDecorations="Underline"><Run Language="fr-fr" Text="Trombinoscope"/></TextBlock>
         <TextBox Grid.Column="2" HorizontalAlignment="Left" Margin="130,3,0,0" TextWrapping="Wrap" Text="Recherche . . ." VerticalAlignment="Top" Width="276" Height="21" />
         <ListBox x:Name="ListBoxTrom" Grid.Column="2" Margin="0,50,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center" Width="674" Height="399" VerticalAlignment="Top" SelectionChanged="ListBoxTrom_SelectionChanged">

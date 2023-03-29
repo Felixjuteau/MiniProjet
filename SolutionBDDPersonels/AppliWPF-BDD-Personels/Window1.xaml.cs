@@ -29,7 +29,7 @@ namespace AppliWPF_BDD_Personels
             InitializeComponent();
             bddPersonels = new CBDDPersonels1();
             Trombinoscope();
-            
+            CBServices();
         }
        
 
@@ -94,13 +94,18 @@ namespace AppliWPF_BDD_Personels
             StackPanel stackPanel = new StackPanel();
             Image image = new Image();
             TextBlock textBlock = new TextBlock();
+            image.Name = "I"+personnel.Id.ToString();
+            textBlock.Name = "TB" + personnel.Id.ToString();
             LoadImage(personnel.Photo,image);
-            textBlock.Text = personnel.Nom +" "+ personnel.Prenom;
+            textBlock.Text = "Nom: "+personnel.Nom +"\nPrénom: "+ personnel.Prenom;
+            textBlock.TextWrapping = TextWrapping.Wrap;
+            textBlock.TextAlignment=TextAlignment.Center;
             image.Width = image.Height = 150;
             textBlock.Width = 150;
             stackPanel.Width = 150;
             stackPanel.Children.Add(image);
             stackPanel.Children.Add(textBlock);
+            stackPanel.Name = "SP" + personnel.Id;
             return stackPanel;
         }
 
@@ -128,7 +133,7 @@ namespace AppliWPF_BDD_Personels
                         personnel.Fonction = fonction;
                         personnel.IdFonction = fonction.Id;
                     }
-                }
+               }
             
         }
 
@@ -145,15 +150,60 @@ namespace AppliWPF_BDD_Personels
 
         private void ListBoxTrom_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+            ListBox listBox = sender as ListBox;
+            StackPanel selectedStackPanel = listBox.SelectedItem as StackPanel;
+            if (selectedStackPanel != null)
+            {
+                //je recupere l'image du stackpanel et je l'implante dans mon image de modif
+                Image selectedImage = selectedStackPanel.Children.OfType<Image>().FirstOrDefault();
+                imagePicture.Source = selectedImage.Source;
+                
+                //je recupere le texte du textBlock
+                TextBlock selectedTextBlock = selectedStackPanel.Children.OfType<TextBlock>().FirstOrDefault();
+
+                //je recupere le nom
+                int found = selectedTextBlock.Text.IndexOf("\n");
+                string PP = selectedTextBlock.Text.Substring(found + 8).Trim();
+
+                String searchString = ":";
+                int startIndex = selectedTextBlock.Text.IndexOf(searchString)+1;
+                searchString = "Prénom";
+                int endIndex = selectedTextBlock.Text.IndexOf(searchString)-7;
+                String NP = selectedTextBlock.Text.Substring(startIndex, endIndex + searchString.Length - startIndex).Trim();
+                //MessageBox.Show(substring);
+                //MessageBox.Show(PP);
+                List<Personnel> personnels = bddPersonels.GetAllPersonnels();
+                foreach (Personnel personnel in personnels)
+                {
+                    if (NP == personnel.Nom && PP == personnel.Prenom)
+                    {
+
+                        TBNom.Text = personnel.Nom.ToString();
+                        TBPrenom.Text = personnel.Prenom;
+                        TBTelephone.Text = personnel.Telephone;
+                        CBService.Text=personnel.Service.Intitule;
+                        CBFonction.Text = personnel.Fonction.Intitule;
+                        break;
+                    }
+                }
+
+            }
         }
 
-        private void CBService_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CBServices()
         {
-            List<Service>services = new List<Service>();
-            foreach (Service service in services)
+            try
             {
-                CBService.Items.Add(service);
+                List<Service> services = new List<Service>();
+                foreach (Service service in services)
+                {
+                    CBService.Items.Add(service);
+                    
+                }
+            }
+            catch (Exception ex)
+            { 
+                throw ex;
             }
         }
     }
