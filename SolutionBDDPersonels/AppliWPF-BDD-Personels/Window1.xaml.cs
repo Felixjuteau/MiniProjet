@@ -29,7 +29,7 @@ namespace AppliWPF_BDD_Personels
             InitializeComponent();
             bddPersonels = new CBDDPersonels1();
             Trombinoscope();
-            CBServices();
+            ComboBox();
         }
        
 
@@ -90,6 +90,26 @@ namespace AppliWPF_BDD_Personels
                 icon.Source = bitmapImage;
             }
             catch { }
+        }
+        public byte[] ReverseImage(Image image)
+        {
+            byte[] imageData = null;
+
+            try
+            {
+                BitmapSource bitmapSource = (BitmapSource)image.Source;
+                JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(bitmapSource));
+
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    encoder.Save(ms);
+                    imageData = ms.ToArray();
+                }
+            }
+            catch { }
+
+            return imageData;
         }
         public StackPanel stack(Personnel personnel)
         {
@@ -205,6 +225,7 @@ namespace AppliWPF_BDD_Personels
                                 TBTelephone.Text = personnel.Telephone;
                                 CBService.Text = personnel.Service.Intitule;
                                 CBFonction.Text = personnel.Fonction.Intitule;
+                                TBId.Text = personnel.Id.ToString();
                                 break;
                             }
                         }
@@ -222,15 +243,20 @@ namespace AppliWPF_BDD_Personels
             }
         }
 
-        private void CBServices()
+        private void ComboBox()
         {
             try
             {
-                List<Service> services = new List<Service>();
+                List<Service> services = bddPersonels.GetAllServices();
+                List<Fonction> fonctions = bddPersonels.GetAllFonction();
                 foreach (Service service in services)
                 {
-                    CBService.Items.Add(service);
+                    CBService.Items.Add(service.Intitule);
                     
+                }
+                foreach (Fonction fonction in fonctions)
+                {
+                    CBFonction.Items.Add(fonction.Intitule);
                 }
             }
             catch (Exception ex)
@@ -239,16 +265,24 @@ namespace AppliWPF_BDD_Personels
             }
         }
 
+
         private void BtModif_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                Personnel personnel = ListBoxTrom.SelectedItem as Personnel;
-                MessageBox.Show(personnel.Nom.ToString());
-                MessageBox.Show(ListBoxTrom.SelectedItem.ToString()); 
-                if (TBNom.Text != personnel.Nom && TBNom.Text!= "" || TBPrenom.Text != personnel.Prenom && TBPrenom.Text != "" || TBTelephone.Text != personnel.Telephone || CBFonction.Text != personnel.Fonction.ToString() || CBService.Text != personnel.Service.ToString() || imagePicture.Source != ListBoxTrom.SelectedItem)
+                if (TBNom.Text!= "" ||TBPrenom.Text != "")
                 {
+                    Personnel personnel = new Personnel();
+                   
+                    personnel.Nom = TBNom.Text;
+                    personnel.Prenom = TBPrenom.Text;
+                    personnel.Telephone = TBTelephone.Text;
+                    personnel.IdService = bddPersonels.GetServicebyintitule(CBService.SelectedItem.ToString()).Id;
+                    personnel.IdFonction = bddPersonels.GetFonctionbyintitule(CBFonction.SelectedItem.ToString()).Id;
+                    personnel.Photo = ReverseImage(imagePicture);
+                    personnel.Id = Convert.ToInt32(TBId.Text);
                     bddPersonels.ModifPersonel(personnel);
+                   
                 }
                 else
                 {

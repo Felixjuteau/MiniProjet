@@ -53,8 +53,16 @@ namespace biblioBDDPersonels1
             //services.Sort();
             //return services;
             return dc.Services.OrderBy(y => y.Intitule).ToList();
-
         }
+    public Service GetServicebyintitule(string intitule) {
+        return dc.Services.Where(x=>x.Intitule== intitule).FirstOrDefault();
+        }
+        public Fonction GetFonctionbyintitule(string intitule)
+        {
+            return dc.Fonctions.Where(x=>x.Intitule==intitule).FirstOrDefault();
+        }
+
+
         public Personnel GetPersonnel(string _Prenom,string _Nom,int _IdService,int _IdFonction,string _Telephone,byte[] _Photo) {//permet de recuperer 
             Personnel personnel = new Personnel();
             personnel.Prenom = _Prenom;
@@ -72,7 +80,12 @@ namespace biblioBDDPersonels1
             {
                 int id = personnel.Id;
                 Personnel personnel2 = dc.Personnels.Single(x => x.Id == id);
-                personnel2 = personnel;
+                personnel2.Nom= personnel.Nom;
+                personnel2.Prenom = personnel.Prenom;
+                personnel2.Telephone= personnel.Telephone;
+                personnel2.Photo= personnel.Photo;
+                personnel2.IdService = 5;  // personnel.IdService;
+                personnel2.IdFonction= personnel.IdFonction;
                 dc.SubmitChanges();
             }
             catch (Exception ex) { throw ex; };
