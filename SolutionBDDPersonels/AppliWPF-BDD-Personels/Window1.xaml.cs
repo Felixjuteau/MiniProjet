@@ -241,11 +241,21 @@ namespace AppliWPF_BDD_Personels
 
         private void BtModif_Click(object sender, RoutedEventArgs e)
         {
-            Personnel personnel = CBService.SelectedItem as Personnel;
-            if (TBNom.Text!=personnel.Nom && personnel.Nom!="" ||TBPrenom.Text!=personnel.Prenom && personnel.Prenom!=""||TBTelephone.Text!=personnel.Telephone||CBFonction.Text!=personnel.Fonction.ToString()||CBService.Text!=personnel.Service.ToString()|| )
+            try
             {
-               
+                Personnel personnel = ListBoxTrom.SelectedItem as Personnel;
+                MessageBox.Show(personnel.Nom.ToString());
+                MessageBox.Show(ListBoxTrom.SelectedItem.ToString()); 
+                if (TBNom.Text != personnel.Nom && TBNom.Text!= "" || TBPrenom.Text != personnel.Prenom && TBPrenom.Text != "" || TBTelephone.Text != personnel.Telephone || CBFonction.Text != personnel.Fonction.ToString() || CBService.Text != personnel.Service.ToString() || imagePicture.Source != ListBoxTrom.SelectedItem)
+                {
+                    bddPersonels.ModifPersonel(personnel);
+                }
+                else
+                {
+                    throw new Exception("erreur Modification");
+                }
             }
+            catch (Exception ex) { throw ex; }
         }
     }
 }
