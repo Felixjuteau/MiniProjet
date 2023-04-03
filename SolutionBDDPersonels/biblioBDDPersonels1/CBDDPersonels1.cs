@@ -9,6 +9,7 @@ using BddpersonnelContext;
 using System.Runtime.InteropServices.ComTypes;
 using System.Windows;
 using static System.Net.Mime.MediaTypeNames;
+using System.Security.Policy;
 
 namespace biblioBDDPersonels1
 {
@@ -64,7 +65,13 @@ namespace biblioBDDPersonels1
             personnel.Photo = _Photo;
             return personnel;
         }
-
+     
+        public void ModifPersonel(Personnel personnel)
+        {
+            int id = personnel.Id;
+            Personnel personnel2 = dc.Personnels.Single(x => x.Id == id);
+            dc.SubmitChanges();
+        }
         //return bdd.Personnels.Where(xx => x.Service.Id == service Id.OrderBy( y=> y.nom).then(y=>u.Prenom).ToList();
         
     }
