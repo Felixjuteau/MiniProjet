@@ -193,18 +193,25 @@ namespace AppliWPF_BDD_Personels
                     //MessageBox.Show(substring);
                     //MessageBox.Show(PP);
                     List<Personnel> personnels = bddPersonels.GetAllPersonnels();
-                    foreach (Personnel personnel in personnels)
+                    if (personnels != null)
                     {
-                        if (NP == personnel.Nom && PP == personnel.Prenom)
+                        foreach (Personnel personnel in personnels)
                         {
+                            if (NP == personnel.Nom && PP == personnel.Prenom)
+                            {
 
-                            TBNom.Text = personnel.Nom.ToString();
-                            TBPrenom.Text = personnel.Prenom;
-                            TBTelephone.Text = personnel.Telephone;
-                            CBService.Text = personnel.Service.Intitule;
-                            CBFonction.Text = personnel.Fonction.Intitule;
-                            break;
+                                TBNom.Text = personnel.Nom.ToString();
+                                TBPrenom.Text = personnel.Prenom;
+                                TBTelephone.Text = personnel.Telephone;
+                                CBService.Text = personnel.Service.Intitule;
+                                CBFonction.Text = personnel.Fonction.Intitule;
+                                break;
+                            }
                         }
+                    }
+                    else
+                    {
+                        throw new Exception("listPersonnel vide");
                     }
                 }
 
@@ -235,7 +242,7 @@ namespace AppliWPF_BDD_Personels
         private void BtModif_Click(object sender, RoutedEventArgs e)
         {
             Personnel personnel = CBService.SelectedItem as Personnel;
-            if (TBNom.Text!=personnel.Nom||TBPrenom.Text!=personnel.Prenom||TBTelephone.Text!=personnel.Telephone||CBFonction.Text!=personnel.Fonction.ToString()||CBService.Text!=personnel.Service.ToString())
+            if (TBNom.Text!=personnel.Nom && personnel.Nom!="" ||TBPrenom.Text!=personnel.Prenom && personnel.Prenom!=""||TBTelephone.Text!=personnel.Telephone||CBFonction.Text!=personnel.Fonction.ToString()||CBService.Text!=personnel.Service.ToString()|| )
             {
                
             }

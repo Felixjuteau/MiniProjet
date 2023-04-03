@@ -68,9 +68,14 @@ namespace biblioBDDPersonels1
      
         public void ModifPersonel(Personnel personnel)
         {
-            int id = personnel.Id;
-            Personnel personnel2 = dc.Personnels.Single(x => x.Id == id);
-            dc.SubmitChanges();
+            try
+            {
+                int id = personnel.Id;
+                Personnel personnel2 = dc.Personnels.Single(x => x.Id == id);
+                personnel2 = personnel;
+                dc.SubmitChanges();
+            }
+            catch (Exception ex) { throw ex; };
         }
         //return bdd.Personnels.Where(xx => x.Service.Id == service Id.OrderBy( y=> y.nom).then(y=>u.Prenom).ToList();
         
